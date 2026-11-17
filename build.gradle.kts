@@ -86,7 +86,7 @@ bukkit {
     author = findProperty("author").toString()
     main = "me.wyne.eventcontrol.EventControl"
     apiVersion = "1.16"
-    softDepend = listOf("PlaceholderAPI", "CommandAPI", "WorldEdit", "WorldGuard")
+    softDepend = listOf("PlaceholderAPI", "CommandAPI")
     permissions {
         register("eventcontrol.*") {
             children = listOf(
