@@ -35,7 +35,7 @@ class QueueService @Inject constructor(
 ) : Loadable, Terminable {
 
     /** Resumable timelines, keyed by queue, written on disable and on reload. */
-    @JSON(path = "queues.json")
+    @JSON(path = "data/queues.json")
     private var persisted: MutableMap<String, MutableList<PersistedSlot>> = mutableMapOf()
 
     private val live = linkedMapOf<String, EventQueue>()
