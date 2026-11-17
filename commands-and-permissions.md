@@ -8,7 +8,7 @@ description: >-
 
 `/eventcontrol`, aliased `/ec`, is the admin side. `/event` is what players use. Both need [CommandAPI](https://commandapi.jorel.dev/) — it is a soft dependency, and without it the plugin runs its queues but registers no commands.
 
-Every argument is tab-completed from live state: queue names from the loaded queues, event names from the loaded definitions.
+Every argument is tab-completed from live state: queue names from the loaded queues, event names from the loaded definitions. Queue and event keys are quoted arguments, so put nested keys containing `/` in quotes — for example, `/eventcontrol start "world/main"`.
 
 ## Inspecting
 

@@ -3,7 +3,7 @@ package me.wyne.eventcontrol.command
 import dev.jorel.commandapi.CommandAPICommand
 import dev.jorel.commandapi.arguments.Argument
 import dev.jorel.commandapi.arguments.ArgumentSuggestions
-import dev.jorel.commandapi.arguments.StringArgument
+import dev.jorel.commandapi.arguments.TextArgument
 import dev.jorel.commandapi.executors.CommandArguments
 import dev.jorel.commandapi.executors.CommandExecutor
 import me.wyne.eventcontrol.EventControl
@@ -34,12 +34,12 @@ class ReloadCommand(plugin: EventControl) : SubCommand("reload") {
 //region Shared pieces
 
 internal fun queueArgument(queues: QueueService): Argument<*> =
-    StringArgument("queue").replaceSuggestions(
+    TextArgument("queue").replaceSuggestions(
         ArgumentSuggestions.strings { queues.all.map { it.key }.toTypedArray() }
     )
 
 internal fun eventArgument(definitions: EventDefinitionProvider): Argument<*> =
-    StringArgument("event").replaceSuggestions(
+    TextArgument("event").replaceSuggestions(
         ArgumentSuggestions.strings { definitions.map.keys.toTypedArray() }
     )
 
