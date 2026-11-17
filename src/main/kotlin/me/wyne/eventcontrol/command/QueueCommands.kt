@@ -150,17 +150,19 @@ class UpcomingCommand(private val queues: QueueService) : SubCommand("upcoming")
                 return
             }
             running.forEach { queue ->
-                queue.activeSlot?.prepared?.let { prepared ->
+                val isActive = queue.activeSlot?.prepared?.let { prepared ->
                     sender.placeholderComponent(
                         "info-event-active",
                         "event" replace prepared.definition.key,
                         "ends-in" replace millisUntil(prepared.endAt),
                         "position" replace position(prepared.location)
                     ).sendMessage(sender)
+                    true
                 }
+                if (isActive == true) return@forEach
                 queue.upcoming
                     .filter { it.state != SlotState.RUNNING }
-                    .take(queue.lookahead)
+                    .take(1)
                     .forEach { slot ->
                         val definition = slot.definition ?: return@forEach
                         sender.placeholderComponent(
