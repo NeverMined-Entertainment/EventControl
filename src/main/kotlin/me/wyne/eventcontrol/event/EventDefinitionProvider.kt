@@ -34,7 +34,7 @@ private class DefinitionFactory(private val registries: Registries) : GenericFac
 
     override fun create(key: String, config: ConfigurationSection): EventDefinition {
         require(isValidKey(key)) {
-            "Event key '$key' must match [a-z0-9-]+ so it can be addressed in a placeholder"
+            "Event key '$key' must match [a-z0-9/-]+ so it can be addressed in a placeholder"
         }
         val section = config.deep(key)
         val typeKey = requireNotNull(section.getString("type")) { "Event '$key' has no 'type'" }

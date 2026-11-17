@@ -105,9 +105,10 @@ private class KeyedFactoryRegistry<T : Any>(
 
 /**
  * PlaceholderAPI splits its parameters on '_', so a key containing one cannot be
- * addressed in a placeholder. Rejecting it at registration beats shipping
- * example keys shaped to dodge the problem.
+ * addressed in a placeholder. A slash is left intact, so nested file paths remain
+ * valid keys. Rejecting an underscore at registration beats shipping example keys
+ * shaped to dodge the problem.
  */
-internal val KEY_PATTERN = Regex("[a-z0-9-]+")
+internal val KEY_PATTERN = Regex("[a-z0-9/-]+")
 
 internal fun isValidKey(key: String) = KEY_PATTERN.matches(key)

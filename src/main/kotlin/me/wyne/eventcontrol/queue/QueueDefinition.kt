@@ -26,7 +26,7 @@ data class QueueDefinition(
 
         override fun create(key: String, config: ConfigurationSection): QueueDefinition {
             require(isValidKey(key)) {
-                "Queue key '$key' must match [a-z0-9-]+ so it can be addressed in a placeholder"
+                "Queue key '$key' must match [a-z0-9/-]+ so it can be addressed in a placeholder"
             }
             val section = config.deep(key)
             val events = section.getStringList("events")

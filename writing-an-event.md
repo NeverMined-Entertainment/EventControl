@@ -47,7 +47,7 @@ radius: 600
 Both are then eligible in a queue, as separate entries with separate weights and cooldowns.
 
 {% hint style="warning" %}
-An event key must match `[a-z0-9-]+`, for the same reason a queue key must: PlaceholderAPI splits on `_`. Keep the files flat as well — a file in a subdirectory takes the directory into its key, and the `/` fails the rule. A file that fails to load is logged by name and skipped, so a bad file costs you that event rather than the queue.
+An event key must match `[a-z0-9/-]+`, for the same reason a queue key must: EventControl splits placeholder parameters on `_`. A file in a subdirectory takes the directory into its key with `/`, which placeholders preserve. A file that fails to load is logged by name and skipped, so a bad file costs you that event rather than the queue.
 {% endhint %}
 
 ## Naming an event

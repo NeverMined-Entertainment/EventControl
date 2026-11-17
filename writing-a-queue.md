@@ -39,7 +39,7 @@ The file name is the queue's key — `main.yml` is the queue `main`, which is ho
 Anything else in the file is read by the source, not by the engine — `weighted-random-avoid-repeats` above is one of those.
 
 {% hint style="warning" %}
-A queue key must match `[a-z0-9-]+`. PlaceholderAPI splits on `_`, so an underscore would make the queue unaddressable; the key is rejected at load with a logged error instead of failing quietly later. Keep the files flat, too — a queue in a subdirectory takes the directory into its key, and the `/` fails the same rule.
+A queue key must match `[a-z0-9/-]+`. EventControl splits placeholder parameters on `_`, so an underscore would make the queue unaddressable; the key is rejected at load with a logged error instead of failing quietly later. A queue in a subdirectory takes the directory into its key with `/`, which placeholders preserve.
 {% endhint %}
 
 ## How the timeline moves
