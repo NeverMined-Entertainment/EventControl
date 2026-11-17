@@ -35,12 +35,12 @@ class ReloadCommand(plugin: EventControl) : SubCommand("reload") {
 
 internal fun queueArgument(queues: QueueService): Argument<*> =
     TextArgument("queue").replaceSuggestions(
-        ArgumentSuggestions.strings { queues.all.map { it.key }.toTypedArray() }
+        ArgumentSuggestions.strings { queues.all.map { "\"${it.key}\"" }.toTypedArray() }
     )
 
 internal fun eventArgument(definitions: EventDefinitionProvider): Argument<*> =
     TextArgument("event").replaceSuggestions(
-        ArgumentSuggestions.strings { definitions.map.keys.toTypedArray() }
+        ArgumentSuggestions.strings { definitions.map.keys.map { "\"${it}\"" }.toTypedArray() }
     )
 
 
